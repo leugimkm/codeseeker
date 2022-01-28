@@ -1,6 +1,5 @@
 import argparse
 import configparser
-from ctypes import Union
 import requests
 import webbrowser
 from typing import List, Optional
@@ -53,7 +52,7 @@ def validate_response(response: requests.Response) -> None:
 
 
 def validate_data_links(data: List[str]) -> None:
-    """Validate the data.
+    """Validate the data links.
 
     Args:
         data (List[str]): The data to be validated.
@@ -65,21 +64,25 @@ def validate_data_links(data: List[str]) -> None:
 
 
 class Seeker:
+    """Seeker that searches for a keyword in a GitHub repository.
     
-    def __init__(self, path: str = "codeseeker/config.ini") -> None:
+    Args:
+        path (str, optional): The path to the config file.
+    """
+    
+    def __init__(self, path: Optional[str] = "codeseeker/config.ini") -> None:
         self.config = configparser.ConfigParser()
         self.config.read(path)
         self._set_defaults()
     
     def _set_defaults(self):
-        """Set default values."""
-        self.github_url = self.config["DEFAULT"]["github_url"]
-        self.base_url = self.config["DEFAULT"]["base_url"]
-        self.repo     = self.config["DEFAULT"]["repo"]
-        self.language = self.config["DEFAULT"]["language"]
-        self.query = "{}+in%3afile+language%3a{}+repo%3a{}"
-        self.url = self.base_url + self.query
-        self.link = self.github_url + "{}/blob/main/{}"
+        self.github = self.config["DEFAULT"]["github_url"]
+        self.base   = self.config["DEFAULT"]["base_url"]
+        self.repo   = self.config["DEFAULT"]["repo"]
+        self.lang   = self.config["DEFAULT"]["language"]
+        self.query  = "{}+in%3afile+language%3a{}+repo%3a{}"
+        self.url    = self.base + self.query
+        self.link   = self.github + "{}/blob/main/{}"
 
     def search(
         self,
@@ -99,7 +102,7 @@ class Seeker:
         """
         response = requests.get(self.url.format(
             keyword,
-            self.language,
+            self.lang,
             self.repo,
         ))
         try:
@@ -115,7 +118,6 @@ def display_data(data: List[str], tag: str = "path") -> None:
     Args:
         data (List[str]): The data to be displayed.
     """
-    
     for item in data:
         print(item[tag])
     print(f"\n{len(data)} repositories found.")
