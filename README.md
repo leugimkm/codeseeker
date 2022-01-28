@@ -16,4 +16,4 @@ Search code through a GitHub repo.
      \___\___/ \__,_|\___||___/\___|\___|_|\_\___|_|   
                                                        
 
-> __**NOTE**__: TODO
+> __**TODO**__: add more functionality
