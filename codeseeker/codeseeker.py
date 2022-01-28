@@ -42,15 +42,53 @@ def validate_response(response: requests.Response) -> None:
 
 class Seeker:
     
-    def __init__(self) -> None:
-        ...
+    def __init__(self, path: str = "search/config.ini") -> None:
+        self.config = configparser.ConfigParser()
+        self.config.read(path)
+        self._set_defaults()
     
-    def search() -> None:
-        ...
+    def _set_defaults(self):
+        """Set default values."""
+        self.base_url = self.config["DEFAULT"]["base_url"]
+        self.repo     = self.config["DEFAULT"]["repo"]
+        self.language = self.config["DEFAULT"]["language"]
+        self.query = "{}+in%3afile+language%3a{}+repo%3a{}"
+        self.url = self.base_url + self.query
+
+    def search(
+        self,
+        keyword: str,
+        tag: str = "items",
+    ) -> List[dict]:
+        """Search for a keyword in a GitHub repository.
+
+        Args:
+            keyword (str): The keyword to search.
+
+        Raises:
+            SearchException: If the response is not 200.
+
+        Returns:
+            List[dict]: The search results.
+        """
+        response = requests.get(self.url.format(
+            keyword,
+            self.language,
+            self.repo,
+        ))
+        validate_response(response)
+        return response.json()[tag]
 
 
 def display_data(data: List[str], tag: str = "path") -> None:
-    ...
+    """Display the data.
+
+    Args:
+        data (List[str]): The data to be displayed.
+    """
+    print(f"Found {len(data)} repositories.\n")
+    for item in data:
+        print(item[tag])
 
 
 def main():
