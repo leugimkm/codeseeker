@@ -41,7 +41,12 @@ def validate_response(response: requests.Response) -> None:
 
 
 class Seeker:
-    ...
+    
+    def __init__(self) -> None:
+        ...
+    
+    def search() -> None:
+        ...
 
 
 def display_data(data: List[str], tag: str = "path") -> None:
@@ -54,6 +59,15 @@ def main():
         description="Search code through a GitHub repository.",
         epilog="",
     )
+    parser.add_argument(
+        "keyword",
+        help="Search for a keyword in the repository.",
+    )
+    args = parser.parse_args()
+    seeker = Seeker()
+    if args.keyword:
+        data = seeker.search(args.keyword)
+        display_data(data)
 
 
 if __name__ == "__main__":
