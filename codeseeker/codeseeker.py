@@ -42,7 +42,7 @@ def validate_response(response: requests.Response) -> None:
 
 class Seeker:
     
-    def __init__(self, path: str = "search/config.ini") -> None:
+    def __init__(self, path: str = "codeseeker/config.ini") -> None:
         self.config = configparser.ConfigParser()
         self.config.read(path)
         self._set_defaults()
