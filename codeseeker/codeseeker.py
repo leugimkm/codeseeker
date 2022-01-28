@@ -1,8 +1,28 @@
+"""CodeSeeker
+
+A simple tool to search code in a GitHub repository.
+
+Usage example:
+    
+    > python codeseeker.py cube
+    1 repository found.
+
+    repository/path/to/file.py
+
+    > python codeseeker.py cube -o
+    1 repository found.
+
+    repository/path/to/file.py
+
+    Opening in a webbrowser...
+"""
 import argparse
 import configparser
 import requests
-import webbrowser
 from typing import List, Optional
+import webbrowser
+
+PATH = "codeseeker/config.ini"
 
 
 class CodeSeekerException(Exception):
@@ -68,9 +88,18 @@ class Seeker:
     
     Args:
         path (str, optional): The path to the config file.
+
+    Attributes:
+        github (str): GitHub url.
+        base (str): The base url.
+        repo (str): The name of the repository.
+        lang (str): Target Programming language of the keyword.
+        query (str): Query that performs the search.
+        url (str): The url to be used by requests.
+        link (str): Github link to the file.
     """
     
-    def __init__(self, path: Optional[str] = "codeseeker/config.ini") -> None:
+    def __init__(self, path: Optional[str] = PATH) -> None:
         self.config = configparser.ConfigParser()
         self.config.read(path)
         self._set_defaults()
@@ -84,11 +113,7 @@ class Seeker:
         self.url    = self.base + self.query
         self.link   = self.github + "{}/blob/main/{}"
 
-    def search(
-        self,
-        keyword: str,
-        tag: str = "items",
-    ) -> List[dict]:
+    def search(self, keyword: str, tag: str = "items") -> List[dict]:
         """Search for a keyword in a GitHub repository.
 
         Args:
@@ -137,6 +162,7 @@ def open_url(
     """
     try:
         validate_data_links(data)
+        print("\nOpening in a webbrowser...")
         for link in data:
             webbrowser.open_new_tab(seeker.link.format(seeker.repo, link[tag]))
     except Exception as e:
