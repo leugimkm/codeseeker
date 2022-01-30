@@ -23,7 +23,8 @@ Usage example:
 import argparse
 import configparser
 
-from seeker import Seeker, show, open_url
+from seeker import Seeker, open_url
+from utils import show
 
 
 def main():
@@ -31,18 +32,21 @@ def main():
     cfg.read("config.ini")
     parser = argparse.ArgumentParser(
         prog="codeseeker",
-        description="Search code through a GitHub repository.",
+        description=(
+            "CodeSeeker is a simple tool to search a keyword in a"\
+            " file (source code) from a GitHub repository."
+        ),
         epilog="",
     )
     parser.add_argument(
         "keyword",
-        help="Search for a keyword in the repository.",
+        help="Keyword to be searched.",
     )
     parser.add_argument(
         "-o",
         "--open",
         action="store_true",
-        help="Open the results in the browser.",
+        help="Open the results in a web browser.",
     )
     args = parser.parse_args()
     seeker = Seeker(cfg)
