@@ -14,7 +14,7 @@ Search code through a GitHub repo.
     |   | | | | |-' `-. |-' |-' |<  |-' |  
     `-' `-' `-^ `-' `-' `-' `-' ' ` `-' '  
 
-`codeseeker` is simple tool to search code in a GitHub repository.
+`codeseeker` is simple tool to search a keyword in a file (source code) from a GitHub repository.
 
 # Installation
 
@@ -33,11 +33,26 @@ To delete the package:
 python -m pip uninstall codeseeker
 ```
 
+# Example
+
+To search for a file that contains _"cube"_ in a repository:
+
+    > python -m codeseeker cube
+    1 file found.
+
+    repository/path/to/file.py
+
+To open the file in a web browser
+
+    > python -m codeseeker cube -o
+    1 file found.
+
+    repository/path/to/file.py
+
+    Opening in a web browser...
+
 # Contribution
 
 If you'd like to contribute, fork the repository, commit your changes to main branch 
 and send a pull request.
 Make sure you add yourself to authors.
-
-
-> __**TODO**__: add more functionality
