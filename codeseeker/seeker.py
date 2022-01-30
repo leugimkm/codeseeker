@@ -6,8 +6,7 @@ from validators import validate_response, validate_data_links
 
 
 class Seeker:
-    """Seeker that searches for a keyword in a file (source code) from a
-    GitHub repository.
+    """Seeker that searchs for code on GitHub.
     
     Args:
         path (str, optional): The path to the config file.

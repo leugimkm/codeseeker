@@ -3,8 +3,7 @@
 
 """CodeSeeker
 
-A simple tool to search a keyword in a file (source code) from a GitHub
-repository.
+A simple tool to search for code on GitHub.
 
 Usage example:
     
@@ -33,8 +32,7 @@ def main():
     parser = argparse.ArgumentParser(
         prog="codeseeker",
         description=(
-            "CodeSeeker is a simple tool to search a keyword in a"\
-            " file (source code) from a GitHub repository."
+            "CodeSeeker is a simple tool to search for code on GitHub."
         ),
         epilog="",
     )

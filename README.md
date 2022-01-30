@@ -14,7 +14,7 @@ Search code through a GitHub repo.
     |   | | | | |-' `-. |-' |-' |<  |-' |  
     `-' `-' `-^ `-' `-' `-' `-' ' ` `-' '  
 
-`codeseeker` is simple tool to search a keyword in a file (source code) from a GitHub repository.
+`codeseeker` is simple tool to search for code in GitHub.
 
 # Installation
 
