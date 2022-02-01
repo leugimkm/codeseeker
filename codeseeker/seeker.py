@@ -22,7 +22,7 @@ class Query:
 
     def __init__(self) -> None:
         self.config = configparser.ConfigParser()
-        self.config.read("codeseeker/config.ini")
+        self.config.read("config.ini")
         self._set_defaults()
 
     def _set_defaults(self):
