@@ -1,4 +1,4 @@
-import requests # type: ignore
+import requests  # type: ignore
 from typing import Dict, List, Optional
 
 
@@ -7,8 +7,8 @@ class CodeSeekerException(Exception):
 
 
 class ValidationException(CodeSeekerException):
-    """Exception raised when a validation function is called
-    and the value is not valid.
+    """Exception raised when a validation function is called and the
+    value is not valid.
     """
 
 
@@ -19,15 +19,16 @@ class NoLinkFoundException(CodeSeekerException):
 def _raise_validation_exception(
     standart_msg: str,
     custom_msg: Optional[str] = None,
-    ) -> ValidationException:
+) -> ValidationException:
     """Raise a ValidationException.
 
     Args:
         standard_msg (str): Standard message.
         custom_msg (str, optional): Custom message.
-    
+
     Raises:
-        ValidationException: An exception with a standard or custom message.
+        ValidationException: An exception with a standard or custom
+        message.
     """
     if custom_msg is None:
         raise ValidationException(str(standart_msg))

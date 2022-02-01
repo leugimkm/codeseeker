@@ -6,7 +6,6 @@
 A simple tool to search for code on GitHub.
 
 Usage example:
-    
     > python -m codeseeker cube
     1 file(s) found(s).
 

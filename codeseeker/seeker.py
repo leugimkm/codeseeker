@@ -1,4 +1,4 @@
-import requests # type: ignore
+import requests  # type: ignore
 from typing import Dict, List
 import webbrowser
 
@@ -9,7 +9,7 @@ class Query:
     """Representation of a query.
 
     Args:
-        cfg (str, object): The configuration file.
+        cfg (str, object): The configuration object.
 
     Attributes:
         github (str): GitHub url.
@@ -25,33 +25,36 @@ class Query:
         self.config = cfg
         self._set_defaults()
 
-
     def _set_defaults(self):
         self.github = self.config["DEFAULT"]["github_url"]
-        self.base   = self.config["DEFAULT"]["base_url"]
-        self.repo   = self.config["DEFAULT"]["repo"]
-        self.lang   = self.config["DEFAULT"]["language"]
-        self.query  = "?q={}+in%3afile+language%3a{}+repo%3a{}"
-        self.url    = self.base + self.query
-        self.link   = self.github + "{}/blob/main/{}"
+        self.base = self.config["DEFAULT"]["base_url"]
+        self.repo = self.config["DEFAULT"]["repo"]
+        self.lang = self.config["DEFAULT"]["language"]
+        self.query = "?q={}+in%3afile+language%3a{}+repo%3a{}"
+        self.url = self.base + self.query
+        self.link = self.github + "{}/blob/main/{}"
 
 
 class Seeker:
     """Seeker that searchs for code on GitHub.
-    
+
     Args:
         query (Query): The query to be used.
     """
-    
+
     def __init__(self, cfg: object) -> None:
         self.q = Query(cfg)
-    
-    def search(self, keyword: str, tag: str = "items") -> List[Dict[str, str]]:
+
+    def search(
+        self,
+        keyword: str,
+        tag: str = "items"
+    ) -> List[Dict[str, str]]:
         """Search for a keyword in a GitHub repository.
 
         Args:
             keyword (str): The keyword to search.
-        
+
         Raises:
             SearchException: If the response is not 200.
 
@@ -80,13 +83,16 @@ def open_url(
 
     Args:
         seeker (Seeker): The Seeker object.
-        data (List[Dict[str, str]]: Data that will be used to open the URL.
+        data (List[Dict[str, str]]: Data that will be used to open the
+            URL.
         tag (str, optional): Tag that will be used to open the URL.
     """
     try:
         validate_data_links(data)
         print("\nOpening in a web browser...")
         for link in data:
-            webbrowser.open_new_tab(seeker.q.link.format(seeker.q.repo, link[tag]))
+            webbrowser.open_new_tab(
+                seeker.q.link.format(seeker.q.repo, link[tag])
+            )
     except Exception as e:
         print(e)

@@ -12,7 +12,7 @@ class TestCodeSeekerException(unittest.TestCase):
         if function:
             function()
         self.assertEqual(mock_stdout.getvalue(), expected)
-    
+
     @patch("codeseeker.seeker.requests.get")
     def test_validate_response(self, mock):
         mock = Mock(status_code=404)

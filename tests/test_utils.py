@@ -18,7 +18,7 @@ class TestCodeSeekerUtils(unittest.TestCase):
             repository/path/to/file2.py
 
             2 file(s) found(s).\n"""
-        )
+        )  # noqa: E124
         with patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
             show(data)
             self.assertEqual(mock_stdout.getvalue(), expected)
