@@ -1,5 +1,5 @@
-import requests
-from typing import List, Optional
+import requests # type: ignore
+from typing import Dict, List, Optional
 
 
 class CodeSeekerException(Exception):
@@ -48,7 +48,7 @@ def validate_response(response: requests.Response) -> None:
         raise ValidationException(f"Error: {response.status_code}")
 
 
-def validate_data_links(data: List[str]) -> None:
+def validate_data_links(data: List[Dict[str, str]]) -> None:
     """Validate the data links.
 
     Args:
