@@ -1,5 +1,5 @@
-import requests
-from typing import List
+import requests # type: ignore
+from typing import Dict, List
 import webbrowser
 
 from validators import validate_response, validate_data_links
@@ -46,12 +46,12 @@ class Seeker:
     def __init__(self, cfg: object) -> None:
         self.q = Query(cfg)
     
-    def search(self, keyword: str, tag: str = "items") -> List[dict]:
+    def search(self, keyword: str, tag: str = "items") -> List[Dict[str, str]]:
         """Search for a keyword in a GitHub repository.
 
         Args:
             keyword (str): The keyword to search.
-
+        
         Raises:
             SearchException: If the response is not 200.
 
@@ -68,24 +68,25 @@ class Seeker:
             return response.json()[tag]
         except Exception as e:
             print(e)
+        return []
 
 
 def open_url(
     seeker: Seeker,
-    data: List[str],
+    data: List[Dict[str, str]],
     tag: str = "path",
 ) -> None:
     """Open the URL.
 
     Args:
         seeker (Seeker): The Seeker object.
-        data (Union[str, List[str]]): Data that will be used to open the URL.
+        data (List[Dict[str, str]]: Data that will be used to open the URL.
         tag (str, optional): Tag that will be used to open the URL.
     """
     try:
         validate_data_links(data)
         print("\nOpening in a web browser...")
         for link in data:
-            webbrowser.open_new_tab(seeker.link.format(seeker.repo, link[tag]))
+            webbrowser.open_new_tab(seeker.q.link.format(seeker.q.repo, link[tag]))
     except Exception as e:
         print(e)
