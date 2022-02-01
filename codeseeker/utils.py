@@ -1,13 +1,13 @@
-from typing import List
+from typing import List, Dict
 
-WILDCARDS = ".,:;/\`'\"=*!?#$&+^|~<>()\{\}[]@"
+WILDCARDS: str = ".,:;/\`'\"=*!?#$&+^|~<>()\{\}[]@"
 
 
-def show(data: List[str], tag: str = "path") -> None:
+def show(data: List[Dict[str, str]], tag: str = "path") -> None:
     """Display the data.
 
     Args:
-        data (List[str]): The data to be displayed.
+        data (Dict[str, str]): The data to be displayed.
     """
     for item in data:
         print(item[tag])
