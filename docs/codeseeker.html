@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeseeker package &#8212; codeseeker 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="codeseeker-package">
+<h1>codeseeker package<a class="headerlink" href="#codeseeker-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="codeseeker-codeseeker-module">
+<h2>codeseeker.codeseeker module<a class="headerlink" href="#codeseeker-codeseeker-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-codeseeker.seeker">
+<span id="codeseeker-seeker-module"></span><h2>codeseeker.seeker module<a class="headerlink" href="#module-codeseeker.seeker" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="codeseeker.seeker.Query">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">codeseeker.seeker.</span></code><code class="sig-name descname"><span class="pre">Query</span></code><a class="headerlink" href="#codeseeker.seeker.Query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Representation of a query.</p>
+<dl class="py attribute">
+<dt id="codeseeker.seeker.Query.config">
+<code class="sig-name descname"><span class="pre">config</span></code><a class="headerlink" href="#codeseeker.seeker.Query.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>The configuration object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str, object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="codeseeker.seeker.Query.github">
+<code class="sig-name descname"><span class="pre">github</span></code><a class="headerlink" href="#codeseeker.seeker.Query.github" title="Permalink to this definition">¶</a></dt>
+<dd><p>GitHub url.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="codeseeker.seeker.Query.base">
+<code class="sig-name descname"><span class="pre">base</span></code><a class="headerlink" href="#codeseeker.seeker.Query.base" title="Permalink to this definition">¶</a></dt>
+<dd><p>The base url.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="codeseeker.seeker.Query.repo">
+<code class="sig-name descname"><span class="pre">repo</span></code><a class="headerlink" href="#codeseeker.seeker.Query.repo" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="codeseeker.seeker.Query.lang">
+<code class="sig-name descname"><span class="pre">lang</span></code><a class="headerlink" href="#codeseeker.seeker.Query.lang" title="Permalink to this definition">¶</a></dt>
+<dd><p>Target Programming language of the keyword.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="codeseeker.seeker.Query.query">
+<code class="sig-name descname"><span class="pre">query</span></code><a class="headerlink" href="#codeseeker.seeker.Query.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query that performs the search.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="codeseeker.seeker.Query.url">
+<code class="sig-name descname"><span class="pre">url</span></code><a class="headerlink" href="#codeseeker.seeker.Query.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>The url to be used by requests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="codeseeker.seeker.Query.link">
+<code class="sig-name descname"><span class="pre">link</span></code><a class="headerlink" href="#codeseeker.seeker.Query.link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Github link to the file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="codeseeker.seeker.Seeker">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">codeseeker.seeker.</span></code><code class="sig-name descname"><span class="pre">Seeker</span></code><a class="headerlink" href="#codeseeker.seeker.Seeker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Seeker that searchs for code on GitHub.</p>
+<dl class="py attribute">
+<dt id="codeseeker.seeker.Seeker.q">
+<code class="sig-name descname"><span class="pre">q</span></code><a class="headerlink" href="#codeseeker.seeker.Seeker.q" title="Permalink to this definition">¶</a></dt>
+<dd><p>The query object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#codeseeker.seeker.Query" title="codeseeker.seeker.Query">Query</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="codeseeker.seeker.Seeker.search">
+<code class="sig-name descname"><span class="pre">search</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'items'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.seeker.Seeker.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for a keyword in a GitHub repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keyword</strong> (<em>str</em>) – The keyword to search.</p></li>
+<li><p><strong>tag</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>SearchException</strong> – If the response is not 200.</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The search results.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="codeseeker.seeker.open_url">
+<code class="sig-prename descclassname"><span class="pre">codeseeker.seeker.</span></code><code class="sig-name descname"><span class="pre">open_url</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seeker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'path'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.seeker.open_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the URL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seeker</strong> (<a class="reference internal" href="#codeseeker.seeker.Seeker" title="codeseeker.seeker.Seeker"><em>Seeker</em></a>) – The Seeker object.</p></li>
+<li><p><strong>(</strong><strong>List</strong><strong>[</strong><strong>Dict</strong><strong>[</strong><strong>str</strong> (<em>data</em>) – Data that will be used to open the
+URL.</p></li>
+<li><p><strong>str</strong><strong>]</strong><strong>]</strong> – Data that will be used to open the
+URL.</p></li>
+<li><p><strong>tag</strong> (<em>str</em><em>, </em><em>optional</em>) – Tag that will be used to open the URL.</p></li>
+<li><p><strong>data</strong> (<em>List</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codeseeker.utils">
+<span id="codeseeker-utils-module"></span><h2>codeseeker.utils module<a class="headerlink" href="#module-codeseeker.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="codeseeker.utils.show">
+<code class="sig-prename descclassname"><span class="pre">codeseeker.utils.</span></code><code class="sig-name descname"><span class="pre">show</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'path'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.utils.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – The data to be displayed.</p></li>
+<li><p><strong>tag</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codeseeker.validators">
+<span id="codeseeker-validators-module"></span><h2>codeseeker.validators module<a class="headerlink" href="#module-codeseeker.validators" title="Permalink to this headline">¶</a></h2>
+<dl class="py exception">
+<dt id="codeseeker.validators.CodeSeekerException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">codeseeker.validators.</span></code><code class="sig-name descname"><span class="pre">CodeSeekerException</span></code><a class="headerlink" href="#codeseeker.validators.CodeSeekerException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Base class for exceptions.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="codeseeker.validators.NoLinkFoundException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">codeseeker.validators.</span></code><code class="sig-name descname"><span class="pre">NoLinkFoundException</span></code><a class="headerlink" href="#codeseeker.validators.NoLinkFoundException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#codeseeker.validators.CodeSeekerException" title="codeseeker.validators.CodeSeekerException"><code class="xref py py-class docutils literal notranslate"><span class="pre">codeseeker.validators.CodeSeekerException</span></code></a></p>
+<p>Exception raised when no link is found.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="codeseeker.validators.ValidationException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">codeseeker.validators.</span></code><code class="sig-name descname"><span class="pre">ValidationException</span></code><a class="headerlink" href="#codeseeker.validators.ValidationException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#codeseeker.validators.CodeSeekerException" title="codeseeker.validators.CodeSeekerException"><code class="xref py py-class docutils literal notranslate"><span class="pre">codeseeker.validators.CodeSeekerException</span></code></a></p>
+<p>Exception raised when a validation function is called and the
+value is not valid.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codeseeker.validators.validate_data_links">
+<code class="sig-prename descclassname"><span class="pre">codeseeker.validators.</span></code><code class="sig-name descname"><span class="pre">validate_data_links</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.validators.validate_data_links" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate the data links.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – The data to be validated.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codeseeker.validators.validate_response">
+<code class="sig-prename descclassname"><span class="pre">codeseeker.validators.</span></code><code class="sig-name descname"><span class="pre">validate_response</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.validators.validate_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate the response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>response</strong> (<em>requests.Response</em>) – The response to be validated.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#codeseeker.validators.CodeSeekerException" title="codeseeker.validators.CodeSeekerException"><strong>CodeSeekerException</strong></a> – If the response status code is not 200.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codeseeker">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-codeseeker" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="codeseeker.Seeker">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">codeseeker.</span></code><code class="sig-name descname"><span class="pre">Seeker</span></code><a class="headerlink" href="#codeseeker.Seeker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Seeker that searchs for code on GitHub.</p>
+<dl class="py attribute">
+<dt id="codeseeker.Seeker.q">
+<code class="sig-name descname"><span class="pre">q</span></code><a class="headerlink" href="#codeseeker.Seeker.q" title="Permalink to this definition">¶</a></dt>
+<dd><p>The query object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#codeseeker.seeker.Query" title="codeseeker.seeker.Query">Query</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="codeseeker.Seeker.search">
+<code class="sig-name descname"><span class="pre">search</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'items'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.Seeker.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for a keyword in a GitHub repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keyword</strong> (<em>str</em>) – The keyword to search.</p></li>
+<li><p><strong>tag</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>SearchException</strong> – If the response is not 200.</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The search results.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="codeseeker.open_url">
+<code class="sig-prename descclassname"><span class="pre">codeseeker.</span></code><code class="sig-name descname"><span class="pre">open_url</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seeker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'path'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.open_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the URL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seeker</strong> (<a class="reference internal" href="#codeseeker.Seeker" title="codeseeker.Seeker"><em>Seeker</em></a>) – The Seeker object.</p></li>
+<li><p><strong>(</strong><strong>List</strong><strong>[</strong><strong>Dict</strong><strong>[</strong><strong>str</strong> (<em>data</em>) – Data that will be used to open the
+URL.</p></li>
+<li><p><strong>str</strong><strong>]</strong><strong>]</strong> – Data that will be used to open the
+URL.</p></li>
+<li><p><strong>tag</strong> (<em>str</em><em>, </em><em>optional</em>) – Tag that will be used to open the URL.</p></li>
+<li><p><strong>data</strong> (<em>List</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codeseeker.show">
+<code class="sig-prename descclassname"><span class="pre">codeseeker.</span></code><code class="sig-name descname"><span class="pre">show</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'path'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – The data to be displayed.</p></li>
+<li><p><strong>tag</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">codeseeker</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, leugimkm.
+      
+      |
+      <a href="_sources/codeseeker.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
