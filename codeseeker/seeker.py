@@ -5,11 +5,11 @@ import webbrowser
 from validators import validate_response, validate_data_links
 
 
-class Seeker:
-    """Seeker that searchs for code on GitHub.
-    
+class Query:
+    """Representation of a query.
+
     Args:
-        path (str, optional): The path to the config file.
+        cfg (str, object): The configuration file.
 
     Attributes:
         github (str): GitHub url.
@@ -20,20 +20,32 @@ class Seeker:
         url (str): The url to be used by requests.
         link (str): Github link to the file.
     """
-    
+
     def __init__(self, cfg: object) -> None:
         self.config = cfg
         self._set_defaults()
-    
+
+
     def _set_defaults(self):
         self.github = self.config["DEFAULT"]["github_url"]
         self.base   = self.config["DEFAULT"]["base_url"]
         self.repo   = self.config["DEFAULT"]["repo"]
         self.lang   = self.config["DEFAULT"]["language"]
-        self.query  = "{}+in%3afile+language%3a{}+repo%3a{}"
+        self.query  = "?q={}+in%3afile+language%3a{}+repo%3a{}"
         self.url    = self.base + self.query
         self.link   = self.github + "{}/blob/main/{}"
 
+
+class Seeker:
+    """Seeker that searchs for code on GitHub.
+    
+    Args:
+        query (Query): The query to be used.
+    """
+    
+    def __init__(self, cfg: object) -> None:
+        self.q = Query(cfg)
+    
     def search(self, keyword: str, tag: str = "items") -> List[dict]:
         """Search for a keyword in a GitHub repository.
 
@@ -46,10 +58,10 @@ class Seeker:
         Returns:
             List[dict]: The search results.
         """
-        response = requests.get(self.url.format(
+        response = requests.get(self.q.url.format(
             keyword,
-            self.lang,
-            self.repo,
+            self.q.lang,
+            self.q.repo,
         ))
         try:
             validate_response(response)
