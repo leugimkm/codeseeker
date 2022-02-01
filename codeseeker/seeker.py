@@ -1,9 +1,8 @@
-import configparser
 import requests  # type: ignore
 from typing import Dict, List
 import webbrowser
 
-from validators import validate_response, validate_data_links
+from .validators import validate_response, validate_data_links
 
 
 class Query:
@@ -18,18 +17,19 @@ class Query:
         query (str): Query that performs the search.
         url (str): The url to be used by requests.
         link (str): Github link to the file.
+    
+    TODO:
+        * Add functionality to change the language and the repository.
     """
 
     def __init__(self) -> None:
-        self.config = configparser.ConfigParser()
-        self.config.read("config.ini")
         self._set_defaults()
 
     def _set_defaults(self):
-        self.github = self.config["DEFAULT"]["github_url"]
-        self.base = self.config["DEFAULT"]["base_url"]
-        self.repo = self.config["DEFAULT"]["repo"]
-        self.lang = self.config["DEFAULT"]["language"]
+        self.github = "https://github.com/"
+        self.base = "https://api.github.com/search/code"
+        self.repo = "AyudaEnPython/Soluciones"
+        self.lang = "python"
         self.query = "?q={}+in%3afile+language%3a{}+repo%3a{}"
         self.url = self.base + self.query
         self.link = self.github + "{}/blob/main/{}"
