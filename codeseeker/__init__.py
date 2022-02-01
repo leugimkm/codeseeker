@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 # CodeSeeker
-from .seeker import Seeker, show, open_url
+from .seeker import Seeker, open_url
+from .utils import show
 
 __all__ = [
     "Seeker",
