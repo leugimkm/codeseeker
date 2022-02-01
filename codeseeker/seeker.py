@@ -1,17 +1,16 @@
+import configparser
 import requests  # type: ignore
 from typing import Dict, List
 import webbrowser
 
-from validators import validate_response, validate_data_links
+from codeseeker.validators import validate_response, validate_data_links
 
 
 class Query:
     """Representation of a query.
 
-    Args:
-        cfg (str, object): The configuration object.
-
     Attributes:
+        config (str, object): The configuration object.
         github (str): GitHub url.
         base (str): The base url.
         repo (str): The name of the repository.
@@ -21,8 +20,9 @@ class Query:
         link (str): Github link to the file.
     """
 
-    def __init__(self, cfg: object) -> None:
-        self.config = cfg
+    def __init__(self) -> None:
+        self.config = configparser.ConfigParser()
+        self.config.read("codeseeker/config.ini")
         self._set_defaults()
 
     def _set_defaults(self):
@@ -38,12 +38,12 @@ class Query:
 class Seeker:
     """Seeker that searchs for code on GitHub.
 
-    Args:
-        query (Query): The query to be used.
+    Attributes:
+        q (Query): The query object.
     """
 
-    def __init__(self, cfg: object) -> None:
-        self.q = Query(cfg)
+    def __init__(self) -> None:
+        self.q = Query()
 
     def search(
         self,

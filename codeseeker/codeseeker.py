@@ -19,15 +19,12 @@ Usage example:
     Opening in a web browser...
 """
 import argparse
-import configparser
 
-from seeker import Seeker, open_url
-from utils import show
+from codeseeker.seeker import Seeker, open_url
+from codeseeker.utils import show
 
 
 def main():
-    cfg = configparser.ConfigParser()
-    cfg.read("config.ini")
     parser = argparse.ArgumentParser(
         prog="codeseeker",
         description=(
@@ -46,7 +43,7 @@ def main():
         help="Open the results in a web browser.",
     )
     args = parser.parse_args()
-    seeker = Seeker(cfg)
+    seeker = Seeker()
     data = seeker.search(args.keyword)
     if args.keyword:
         show(data)
