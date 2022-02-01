@@ -5,15 +5,13 @@ try:
 except ImportError:
     from distutils.core import setup
 
-import codeseeker
-
 
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
     name="codeseeker",
-    version=codeseeker.__version__,
+    version="0.0.1",
     url="github.com/leugimkm/codeseeker",
     license="MIT",
     author="leugimkm",
