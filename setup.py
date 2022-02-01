@@ -34,4 +34,9 @@ setup(
         "Programming Language :: Python :: Implementation :: PyPy",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
+    entry_points={
+        "console_scripts": [
+            "codeseeker=codeseeker.__main__:main",
+        ],
+    },
 )

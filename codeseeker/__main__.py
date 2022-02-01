@@ -20,8 +20,8 @@ Usage example:
 """
 import argparse
 
-from codeseeker.seeker import Seeker, open_url
-from codeseeker.utils import show
+from seeker import Seeker, open_url
+from utils import show
 
 
 def main():

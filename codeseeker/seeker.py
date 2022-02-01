@@ -3,7 +3,7 @@ import requests  # type: ignore
 from typing import Dict, List
 import webbrowser
 
-from codeseeker.validators import validate_response, validate_data_links
+from validators import validate_response, validate_data_links
 
 
 class Query:
