@@ -12,7 +12,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 setup(
     name="codeseeker",
     version="0.0.1",
-    url="github.com/leugimkm/codeseeker",
+    url="https://github.com/leugimkm/codeseeker",
     license="MIT",
     author="leugimkm",
     author_email="leugimkm@systrien.com",
