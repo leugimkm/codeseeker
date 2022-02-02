@@ -2,7 +2,7 @@ import requests  # type: ignore
 from typing import Dict, List, Optional, Union
 import webbrowser
 
-from validators import (
+from .validators import (
     validate_response, validate_data_links, validate_keyword
 )
 
@@ -97,7 +97,7 @@ def open_url(
         seeker (Seeker): Seeker object.
         data (List[Dict[str, str]]: Data received from the search.
         tag (str, optional): Tag that will be used to open the URL.
-    
+
     Raises:
         ValidationException: If the data is empty.
     """
@@ -117,7 +117,7 @@ def to_txt(
     data: List[Dict[str, str]],
 ) -> None:
     """Saves the results in a text file.
-    
+
     Args:
         seeker (Seeker): Seeker object.
         data (List[Dict[str, str]]: Data received from the search.
