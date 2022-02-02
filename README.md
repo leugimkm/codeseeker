@@ -52,6 +52,36 @@ To open the file in a web browser
 
     Opening in a web browser...
 
+You can also use it like this:
+
+    > codeseeker calendar -r python/cpython
+    Lib/test/test_calendar.py
+    Lib/calendar.py
+    Lib/test/test_strftime.py
+    Lib/_strptime.py
+    Lib/zoneinfo/_zoneinfo.py
+    Tools/scripts/mailerdaemon.py
+    Lib/datetime.py
+    Lib/email/_parseaddr.py
+    Lib/test/test_imaplib.py
+    Lib/imaplib.py
+    Lib/mailbox.py
+    Lib/http/server.py
+    Lib/ssl.py
+    Lib/http/cookiejar.py
+    Lib/test/datetimetester.py
+
+    15 file(s) found(s).
+
+Help command:
+
+    > codeseeker -h
+
+or:
+
+    > codeseeker --help
+
+
 # Contribution
 
 If you'd like to contribute, fork the repository, commit your changes to main branch 
