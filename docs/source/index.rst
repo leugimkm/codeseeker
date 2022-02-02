@@ -67,6 +67,41 @@ To open the file in a web browser:
 
    Opening in a web browser...
 
+You can use also use it like this:
+
+.. code-block:: console
+
+   > codeseeker calendar -r python/cpython
+   Lib/test/test_calendar.py
+   Lib/calendar.py
+   Lib/test/test_strftime.py
+   Lib/_strptime.py
+   Lib/zoneinfo/_zoneinfo.py
+   Tools/scripts/mailerdaemon.py
+   Lib/datetime.py
+   Lib/email/_parseaddr.py
+   Lib/test/test_imaplib.py
+   Lib/imaplib.py
+   Lib/mailbox.py
+   Lib/http/server.py
+   Lib/ssl.py
+   Lib/http/cookiejar.py
+   Lib/test/datetimetester.py
+   
+   15 file(s) found(s).
+
+Help command:
+
+.. code-block:: console
+
+   > codeseeker -h
+
+or:
+
+.. code-block:: console
+
+   > codeseeker --help
+
 
 Indices and tables
 ==================
