@@ -2,7 +2,7 @@ import requests  # type: ignore
 from typing import Dict, List, Optional, Union
 import webbrowser
 
-from .validators import (
+from validators import (
     validate_response, validate_data_links, validate_keyword
 )
 
@@ -11,7 +11,6 @@ class Query:
     """Representation of a query.
 
     Attributes:
-        config (str, object): The configuration object.
         github (str): GitHub url.
         base (str): The base url.
         repo (str): The name of the repository.
@@ -19,9 +18,7 @@ class Query:
         query (str): Query that performs the search.
         url (str): The url to be used by requests.
         link (str): Github link to the file.
-
-    TODO:
-        * Add functionality to change the language and the repository.
+        tag (str): The tag used in the response.
     """
 
     def __init__(self) -> None:
@@ -42,7 +39,7 @@ class Seeker:
     """Seeker that searchs for code on GitHub.
 
     Attributes:
-        q (Query): The query object.
+        q (Query): Query object.
     """
 
     def __init__(self) -> None:
@@ -58,10 +55,15 @@ class Seeker:
         """Search for a keyword in a GitHub repository.
 
         Args:
-            keyword (str): The keyword to search.
+            keyword (str): Keyword to search.
+            repo (str, optional): Repository to search.
+            lang (str, optional): Programming language target.
+            tag (str, optional): Tag to be used to search. Defaults
+                to "items".
 
         Raises:
             SearchException: If the response is not 200.
+            ValidationException: If the keyword is not valid.
 
         Returns:
             Union[List[Dict[str, str]], None]: The data.
@@ -89,13 +91,15 @@ def open_url(
     seeker: Seeker,
     data: List[Dict[str, str]],
 ) -> None:
-    """Open the URL.
+    """Open the results in a web browser.
 
     Args:
-        seeker (Seeker): The Seeker object.
-        data (List[Dict[str, str]]: Data that will be used to open the
-            URL.
+        seeker (Seeker): Seeker object.
+        data (List[Dict[str, str]]: Data received from the search.
         tag (str, optional): Tag that will be used to open the URL.
+    
+    Raises:
+        ValidationException: If the data is empty.
     """
     try:
         validate_data_links(data)
@@ -112,7 +116,15 @@ def to_txt(
     seeker: Seeker,
     data: List[Dict[str, str]],
 ) -> None:
-    """Saves the results in a text file."""
+    """Saves the results in a text file.
+    
+    Args:
+        seeker (Seeker): Seeker object.
+        data (List[Dict[str, str]]: Data received from the search.
+
+    Raises:
+        ValidationException: If the data is empty.
+    """
     try:
         validate_data_links(data)
         print("\nSaving in a text file...")
