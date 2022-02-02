@@ -17,6 +17,9 @@ Usage example:
     repository/path/to/file.py
 
     Opening in a web browser...
+
+For more information, see:
+https://leugimkm.github.io/codeseeker/
 """
 from .base import parse_args
 from .seeker import Seeker, open_url, to_txt
