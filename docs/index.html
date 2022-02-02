@@ -34,6 +34,78 @@
 <h1>Welcome to codeseeker’s documentation!<a class="headerlink" href="#welcome-to-codeseeker-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>          .                 .
+,-. ,-. ,-| ,-. ,-. ,-. ,-. | , ,-. ,-.
+|   | | | | |-&#39; `-. |-&#39; |-&#39; |&lt;  |-&#39; |
+`-&#39; `-&#39; `-^ `-&#39; `-&#39; `-&#39; `-&#39; &#39; ` `-&#39; &#39;
+</pre></div>
+</div>
+<p><cite>codeseeker</cite> is simple tool to search for code on Github.
+By default it searches to the contents of the source code file.</p>
+</div>
+<div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p><cite>codeseeker</cite> is available on <a class="reference external" href="https://pypi.org/project/codeseeker/">PyPi</a> (MIT license)
+and installation can be performed by running <a class="reference external" href="https://docs.python.org/es/3/installing/index.html">pip</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m pip install codeseeker</span>
+</pre></div>
+</div>
+<p>To upgrade the package:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m pip install codeseeker --upgrade</span>
+</pre></div>
+</div>
+<p>To delete the package:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m pip uninstall codeseeker</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h1>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h1>
+<p>To search for a file that contains _”cube”_ in a repository:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; python -m codeseeker cube</span>
+<span class="go">1 file found</span>
+
+<span class="go">repository/path/to/file.python</span>
+</pre></div>
+</div>
+<p>To open the file in a web browser:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; python -m codeseeker cube -o</span>
+<span class="go">1 file found.</span>
+
+<span class="go">repository/path/to/file.py</span>
+
+<span class="go">Opening in a web browser...</span>
+</pre></div>
+</div>
+<p>You can use also use it like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; codeseeker calendar -r python/cpython</span>
+<span class="go">Lib/test/test_calendar.py</span>
+<span class="go">Lib/calendar.py</span>
+<span class="go">Lib/test/test_strftime.py</span>
+<span class="go">Lib/_strptime.py</span>
+<span class="go">Lib/zoneinfo/_zoneinfo.py</span>
+<span class="go">Tools/scripts/mailerdaemon.py</span>
+<span class="go">Lib/datetime.py</span>
+<span class="go">Lib/email/_parseaddr.py</span>
+<span class="go">Lib/test/test_imaplib.py</span>
+<span class="go">Lib/imaplib.py</span>
+<span class="go">Lib/mailbox.py</span>
+<span class="go">Lib/http/server.py</span>
+<span class="go">Lib/ssl.py</span>
+<span class="go">Lib/http/cookiejar.py</span>
+<span class="go">Lib/test/datetimetester.py</span>
+
+<span class="go">15 file(s) found(s).</span>
+</pre></div>
+</div>
+<p>Help command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; codeseeker -h</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; codeseeker --help</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
@@ -94,9 +166,6 @@
     <div class="footer">
       &copy;2022, leugimkm.
       
-      |
-      <a href="_sources/index.rst.txt"
-          rel="nofollow">Page source</a>
     </div>
 
     

@@ -46,17 +46,6 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Representation of a query.</p>
 <dl class="py attribute">
-<dt id="codeseeker.seeker.Query.config">
-<code class="sig-name descname"><span class="pre">config</span></code><a class="headerlink" href="#codeseeker.seeker.Query.config" title="Permalink to this definition">¶</a></dt>
-<dd><p>The configuration object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>str, object</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
 <dt id="codeseeker.seeker.Query.github">
 <code class="sig-name descname"><span class="pre">github</span></code><a class="headerlink" href="#codeseeker.seeker.Query.github" title="Permalink to this definition">¶</a></dt>
 <dd><p>GitHub url.</p>
@@ -133,6 +122,17 @@
 </dl>
 </dd></dl>
 
+<dl class="py attribute">
+<dt id="codeseeker.seeker.Query.tag">
+<code class="sig-name descname"><span class="pre">tag</span></code><a class="headerlink" href="#codeseeker.seeker.Query.tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>The tag used in the response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -143,7 +143,7 @@
 <dl class="py attribute">
 <dt id="codeseeker.seeker.Seeker.q">
 <code class="sig-name descname"><span class="pre">q</span></code><a class="headerlink" href="#codeseeker.seeker.Seeker.q" title="Permalink to this definition">¶</a></dt>
-<dd><p>The query object.</p>
+<dd><p>Query object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#codeseeker.seeker.Query" title="codeseeker.seeker.Query">Query</a></p>
@@ -153,23 +153,29 @@
 
 <dl class="py method">
 <dt id="codeseeker.seeker.Seeker.search">
-<code class="sig-name descname"><span class="pre">search</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'items'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.seeker.Seeker.search" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">search</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'items'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.seeker.Seeker.search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Search for a keyword in a GitHub repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>keyword</strong> (<em>str</em>) – The keyword to search.</p></li>
-<li><p><strong>tag</strong> (<em>str</em>) – </p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – Keyword to search.</p></li>
+<li><p><strong>repo</strong> (<em>str</em><em>, </em><em>optional</em>) – Repository to search.</p></li>
+<li><p><strong>lang</strong> (<em>str</em><em>, </em><em>optional</em>) – Programming language target.</p></li>
+<li><p><strong>tag</strong> (<em>str</em><em>, </em><em>optional</em>) – Tag to be used to search. Defaults
+to “items”.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>SearchException</strong> – If the response is not 200.</p>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>SearchException</strong> – If the response is not 200.</p></li>
+<li><p><a class="reference internal" href="#codeseeker.validators.ValidationException" title="codeseeker.validators.ValidationException"><strong>ValidationException</strong></a> – If the keyword is not valid.</p></li>
+</ul>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The search results.</p>
+<dd class="field-odd"><p>The data.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>List[dict]</p>
+<dd class="field-even"><p>Union[List[Dict[str, str]], None]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -178,22 +184,45 @@
 
 <dl class="py function">
 <dt id="codeseeker.seeker.open_url">
-<code class="sig-prename descclassname"><span class="pre">codeseeker.seeker.</span></code><code class="sig-name descname"><span class="pre">open_url</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seeker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'path'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.seeker.open_url" title="Permalink to this definition">¶</a></dt>
-<dd><p>Open the URL.</p>
+<code class="sig-prename descclassname"><span class="pre">codeseeker.seeker.</span></code><code class="sig-name descname"><span class="pre">open_url</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seeker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.seeker.open_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the results in a web browser.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>seeker</strong> (<a class="reference internal" href="#codeseeker.seeker.Seeker" title="codeseeker.seeker.Seeker"><em>Seeker</em></a>) – The Seeker object.</p></li>
-<li><p><strong>(</strong><strong>List</strong><strong>[</strong><strong>Dict</strong><strong>[</strong><strong>str</strong> (<em>data</em>) – Data that will be used to open the
-URL.</p></li>
-<li><p><strong>str</strong><strong>]</strong><strong>]</strong> – Data that will be used to open the
-URL.</p></li>
+<li><p><strong>seeker</strong> (<a class="reference internal" href="#codeseeker.seeker.Seeker" title="codeseeker.seeker.Seeker"><em>Seeker</em></a>) – Seeker object.</p></li>
+<li><p><strong>(</strong><strong>List</strong><strong>[</strong><strong>Dict</strong><strong>[</strong><strong>str</strong> (<em>data</em>) – Data received from the search.</p></li>
+<li><p><strong>str</strong><strong>]</strong><strong>]</strong> – Data received from the search.</p></li>
 <li><p><strong>tag</strong> (<em>str</em><em>, </em><em>optional</em>) – Tag that will be used to open the URL.</p></li>
 <li><p><strong>data</strong> (<em>List</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>None</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#codeseeker.validators.ValidationException" title="codeseeker.validators.ValidationException"><strong>ValidationException</strong></a> – If the data is empty.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codeseeker.seeker.to_txt">
+<code class="sig-prename descclassname"><span class="pre">codeseeker.seeker.</span></code><code class="sig-name descname"><span class="pre">to_txt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seeker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.seeker.to_txt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the results in a text file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seeker</strong> (<a class="reference internal" href="#codeseeker.seeker.Seeker" title="codeseeker.seeker.Seeker"><em>Seeker</em></a>) – Seeker object.</p></li>
+<li><p><strong>(</strong><strong>List</strong><strong>[</strong><strong>Dict</strong><strong>[</strong><strong>str</strong> (<em>data</em>) – Data received from the search.</p></li>
+<li><p><strong>str</strong><strong>]</strong><strong>]</strong> – Data received from the search.</p></li>
+<li><p><strong>data</strong> (<em>List</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#codeseeker.validators.ValidationException" title="codeseeker.validators.ValidationException"><strong>ValidationException</strong></a> – If the data is empty.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -251,8 +280,28 @@ value is not valid.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – The data to be validated.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>None</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#codeseeker.validators.NoLinkFoundException" title="codeseeker.validators.NoLinkFoundException"><strong>NoLinkFoundException</strong></a> – If no link is found.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codeseeker.validators.validate_keyword">
+<code class="sig-prename descclassname"><span class="pre">codeseeker.validators.</span></code><code class="sig-name descname"><span class="pre">validate_keyword</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.validators.validate_keyword" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate the keyword.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>keyword</strong> (<em>str</em>) – The keyword to be validated.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#codeseeker.validators.ValidationException" title="codeseeker.validators.ValidationException"><strong>ValidationException</strong></a> – If the keyword is not valid.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -266,7 +315,7 @@ value is not valid.</p>
 <dd class="field-odd"><p><strong>response</strong> (<em>requests.Response</em>) – The response to be validated.</p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><a class="reference internal" href="#codeseeker.validators.CodeSeekerException" title="codeseeker.validators.CodeSeekerException"><strong>CodeSeekerException</strong></a> – If the response status code is not 200.</p>
+<dd class="field-even"><p><a class="reference internal" href="#codeseeker.validators.ValidationException" title="codeseeker.validators.ValidationException"><strong>ValidationException</strong></a> – If the response status code is not 200.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>None</p>
@@ -285,7 +334,7 @@ value is not valid.</p>
 <dl class="py attribute">
 <dt id="codeseeker.Seeker.q">
 <code class="sig-name descname"><span class="pre">q</span></code><a class="headerlink" href="#codeseeker.Seeker.q" title="Permalink to this definition">¶</a></dt>
-<dd><p>The query object.</p>
+<dd><p>Query object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#codeseeker.seeker.Query" title="codeseeker.seeker.Query">Query</a></p>
@@ -295,23 +344,29 @@ value is not valid.</p>
 
 <dl class="py method">
 <dt id="codeseeker.Seeker.search">
-<code class="sig-name descname"><span class="pre">search</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'items'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.Seeker.search" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">search</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'items'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.Seeker.search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Search for a keyword in a GitHub repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>keyword</strong> (<em>str</em>) – The keyword to search.</p></li>
-<li><p><strong>tag</strong> (<em>str</em>) – </p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – Keyword to search.</p></li>
+<li><p><strong>repo</strong> (<em>str</em><em>, </em><em>optional</em>) – Repository to search.</p></li>
+<li><p><strong>lang</strong> (<em>str</em><em>, </em><em>optional</em>) – Programming language target.</p></li>
+<li><p><strong>tag</strong> (<em>str</em><em>, </em><em>optional</em>) – Tag to be used to search. Defaults
+to “items”.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>SearchException</strong> – If the response is not 200.</p>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>SearchException</strong> – If the response is not 200.</p></li>
+<li><p><a class="reference internal" href="#codeseeker.validators.ValidationException" title="codeseeker.validators.ValidationException"><strong>ValidationException</strong></a> – If the keyword is not valid.</p></li>
+</ul>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The search results.</p>
+<dd class="field-odd"><p>The data.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>List[dict]</p>
+<dd class="field-even"><p>Union[List[Dict[str, str]], None]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -320,24 +375,31 @@ value is not valid.</p>
 
 <dl class="py function">
 <dt id="codeseeker.open_url">
-<code class="sig-prename descclassname"><span class="pre">codeseeker.</span></code><code class="sig-name descname"><span class="pre">open_url</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seeker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'path'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.open_url" title="Permalink to this definition">¶</a></dt>
-<dd><p>Open the URL.</p>
+<code class="sig-prename descclassname"><span class="pre">codeseeker.</span></code><code class="sig-name descname"><span class="pre">open_url</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seeker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.open_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the results in a web browser.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>seeker</strong> (<a class="reference internal" href="#codeseeker.Seeker" title="codeseeker.Seeker"><em>Seeker</em></a>) – The Seeker object.</p></li>
-<li><p><strong>(</strong><strong>List</strong><strong>[</strong><strong>Dict</strong><strong>[</strong><strong>str</strong> (<em>data</em>) – Data that will be used to open the
-URL.</p></li>
-<li><p><strong>str</strong><strong>]</strong><strong>]</strong> – Data that will be used to open the
-URL.</p></li>
+<li><p><strong>seeker</strong> (<a class="reference internal" href="#codeseeker.Seeker" title="codeseeker.Seeker"><em>Seeker</em></a>) – Seeker object.</p></li>
+<li><p><strong>(</strong><strong>List</strong><strong>[</strong><strong>Dict</strong><strong>[</strong><strong>str</strong> (<em>data</em>) – Data received from the search.</p></li>
+<li><p><strong>str</strong><strong>]</strong><strong>]</strong> – Data received from the search.</p></li>
 <li><p><strong>tag</strong> (<em>str</em><em>, </em><em>optional</em>) – Tag that will be used to open the URL.</p></li>
 <li><p><strong>data</strong> (<em>List</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>None</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#codeseeker.validators.ValidationException" title="codeseeker.validators.ValidationException"><strong>ValidationException</strong></a> – If the data is empty.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codeseeker.parse_args">
+<code class="sig-prename descclassname"><span class="pre">codeseeker.</span></code><code class="sig-name descname"><span class="pre">parse_args</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.parse_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to parse arguments.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -353,6 +415,28 @@ URL.</p></li>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codeseeker.to_txt">
+<code class="sig-prename descclassname"><span class="pre">codeseeker.</span></code><code class="sig-name descname"><span class="pre">to_txt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seeker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeseeker.to_txt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the results in a text file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seeker</strong> (<a class="reference internal" href="#codeseeker.Seeker" title="codeseeker.Seeker"><em>Seeker</em></a>) – Seeker object.</p></li>
+<li><p><strong>(</strong><strong>List</strong><strong>[</strong><strong>Dict</strong><strong>[</strong><strong>str</strong> (<em>data</em>) – Data received from the search.</p></li>
+<li><p><strong>str</strong><strong>]</strong><strong>]</strong> – Data received from the search.</p></li>
+<li><p><strong>data</strong> (<em>List</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#codeseeker.validators.ValidationException" title="codeseeker.validators.ValidationException"><strong>ValidationException</strong></a> – If the data is empty.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -410,9 +494,6 @@ URL.</p></li>
     <div class="footer">
       &copy;2022, leugimkm.
       
-      |
-      <a href="_sources/codeseeker.rst.txt"
-          rel="nofollow">Page source</a>
     </div>
 
     
