@@ -10,6 +10,62 @@ Welcome to codeseeker's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+::
+
+                   .                 .          
+         ,-. ,-. ,-| ,-. ,-. ,-. ,-. | , ,-. ,-.
+         |   | | | | |-' `-. |-' |-' |<  |-' |  
+         `-' `-' `-^ `-' `-' `-' `-' ' ` `-' '  
+
+`codeseeker` is simple tool to search for code on Github.
+By default it searches to the contents of the source code file.
+
+Installation
+============
+
+`codeseeker` is available on `PyPi <https://pypi.org/project/codeseeker/>`_ (MIT license)
+and installation can be performed by running `pip <https://docs.python.org/es/3/installing/index.html>`_
+
+
+.. code-block:: console
+
+   python -m pip install codeseeker
+
+To upgrade the package:
+
+.. code-block:: console
+
+   python -m pip install codeseeker --upgrade
+
+To delete the package:
+
+.. code-block:: console
+
+   python -m pip uninstall codeseeker
+
+
+Example
+=======
+
+To search for a file that contains _"cube"_ in a repository:
+
+.. code-block:: console
+
+   > python -m codeseeker cube
+   1 file found
+   
+   repository/path/to/file.python
+
+To open the file in a web browser:
+
+.. code-block:: console
+
+   > python -m codeseeker cube -o
+   1 file found.
+
+   repository/path/to/file.py
+
+   Opening in a web browser...
 
 
 Indices and tables
