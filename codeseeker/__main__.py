@@ -17,38 +17,37 @@ Usage example:
     repository/path/to/file.py
 
     Opening in a web browser...
-"""
-import argparse
 
-from .seeker import Seeker, open_url
+For more information, see:
+https://leugimkm.github.io/codeseeker/
+"""
+from .base import parse_args
+from .seeker import Seeker, open_url, to_txt
 from .utils import show
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        prog="codeseeker",
-        description=(
-            "CodeSeeker is a simple tool to search for code on GitHub."
-        ),
-        epilog="",
-    )
-    parser.add_argument(
-        "keyword",
-        help="Keyword to be searched.",
-    )
-    parser.add_argument(
-        "-o",
-        "--open",
-        action="store_true",
-        help="Open the results in a web browser.",
-    )
-    args = parser.parse_args()
+    args = parse_args()
     seeker = Seeker()
-    data = seeker.search(args.keyword)
-    if args.keyword:
-        show(data)
-    if args.open:
-        open_url(seeker, data)
+
+    if args.repo:
+        seeker.repo = args.repo
+    if args.lang:
+        seeker.lang = args.lang
+    if args.tag:
+        seeker.tag = args.tag
+
+    data = seeker.search(args.keyword, args.repo, args.lang)
+
+    if data is None:
+        print("No results found.")
+    else:
+        if args.keyword:
+            show(data)
+        if args.open:
+            open_url(seeker, data)
+        if args.txt:
+            to_txt(seeker, data)
 
 
 if __name__ == "__main__":

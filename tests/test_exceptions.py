@@ -2,7 +2,9 @@ import io
 import unittest
 from unittest.mock import patch, Mock
 
-from codeseeker.validators import validate_response, validate_data_links
+from codeseeker.validators import (
+    validate_response, validate_data_links, validate_keyword
+)
 
 
 class TestCodeSeekerException(unittest.TestCase):
@@ -27,6 +29,26 @@ class TestCodeSeekerException(unittest.TestCase):
         self.assertEqual(
             "Can't open in a web browser (there are no results).",
             str(msg.exception)
+        )
+
+    def test_validate_keyword(self):
+        keyword = ""
+        with self.assertRaises(Exception) as msg:
+            validate_keyword(keyword)
+        self.assertEqual("The keyword can't be empty.", str(msg.exception))
+        keyword = "?#some_keyword"
+        with self.assertRaises(Exception) as msg:
+            validate_keyword(keyword)
+        self.assertEqual(
+            "The keyword can't contain wildcards.", str(msg.exception)
+        )
+        keyword = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"\
+            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        with self.assertRaises(Exception) as msg:
+            validate_keyword(keyword)
+        self.assertEqual(
+            "The keyword can't be longer than 100 characters.",
+            str(msg.exception),
         )
 
 
