@@ -1,7 +1,5 @@
 from typing import List, Dict
 
-WILDCARDS: str = ".,:;/\`'\"=*!?#$&+^|~<>()\{\}[]@"  # noqa: W605
-
 
 def show(data: List[Dict[str, str]], tag: str = "path") -> None:
     """Display the data.

@@ -1,6 +1,8 @@
 import requests  # type: ignore
 from typing import Dict, List, Optional
 
+WILDCARDS: str = ".,:;/\`'\"=*!?#$&+^|~<>()\{\}[]@"  # noqa: W605
+
 
 class CodeSeekerException(Exception):
     """Base class for exceptions."""
@@ -43,7 +45,7 @@ def validate_response(response: requests.Response) -> None:
         response (requests.Response): The response to be validated.
 
     Raises:
-        CodeSeekerException: If the response status code is not 200.
+        ValidationException: If the response status code is not 200.
     """
     if response.status_code != 200:
         raise ValidationException(f"Error: {response.status_code}")
@@ -54,8 +56,35 @@ def validate_data_links(data: List[Dict[str, str]]) -> None:
 
     Args:
         data (List[str]): The data to be validated.
+
+    Raises:
+        NoLinkFoundException: If no link is found.
     """
     if len(data) == 0:
         raise NoLinkFoundException(
             "Can't open in a web browser (there are no results)."
         )
+
+
+def validate_keyword(keyword: str) -> None:
+    """Validate the keyword.
+
+    Args:
+        keyword (str): The keyword to be validated.
+
+    Raises:
+        ValidationException: If the keyword is not valid.
+    """
+    if len(keyword) == 0:
+        _raise_validation_exception(
+            "The keyword can't be empty.",
+        )
+    if len(keyword) > 100:
+        _raise_validation_exception(
+            "The keyword can't be longer than 100 characters.",
+        )
+    for char in keyword:
+        if char in WILDCARDS:
+            _raise_validation_exception(
+                "The keyword can't contain wildcards.",
+            )
