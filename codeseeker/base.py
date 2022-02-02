@@ -2,6 +2,7 @@ from argparse import ArgumentParser
 
 
 def parse_args():
+    """Function to parse arguments."""
     parser = ArgumentParser(
         prog="codeseeker",
         description=(
