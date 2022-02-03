@@ -8,6 +8,8 @@ Search code through a GitHub repo.
 ![GitHub repo size](https://img.shields.io/github/repo-size/leugimkm/codeseeker)
 ![Github last-commit](https://img.shields.io/github/last-commit/leugimkm/codeseeker)
 ![maintenance](https://img.shields.io/maintenance/yes/2022)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/leugimkm/codeseeker)
+![PyPI - Format](https://img.shields.io/pypi/format/codeseeker)
 
               .                 .          
     ,-. ,-. ,-| ,-. ,-. ,-. ,-. | , ,-. ,-.
