@@ -10,6 +10,7 @@ Search code through a GitHub repo.
 ![maintenance](https://img.shields.io/maintenance/yes/2022)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/leugimkm/codeseeker)
 ![PyPI - Format](https://img.shields.io/pypi/format/codeseeker)
+[![Downloads](https://pepy.tech/badge/codeseeker)](https://pepy.tech/project/codeseeker)
 
               .                 .          
     ,-. ,-. ,-| ,-. ,-. ,-. ,-. | , ,-. ,-.
