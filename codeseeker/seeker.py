@@ -136,3 +136,25 @@ def to_txt(
                 f.write("\n")
     except Exception as e:
         print(e)
+
+
+def show_links(
+    seeker: Seeker,
+    data: List[Dict[str, str]],
+) -> None:
+    """Prints the results in the terminal.
+
+    Args:
+        seeker (Seeker): Seeker object.
+        data (List[Dict[str, str]]: Data received from the search.
+
+    Raises:
+        ValidationException: If the data is empty.
+    """
+    try:
+        validate_data_links(data)
+        print("\nShowing results...")
+        for link in data:
+            print(seeker.q.link.format(seeker.q.repo, link[seeker.q.tag]))
+    except Exception as e:
+        print(e)
