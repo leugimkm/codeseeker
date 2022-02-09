@@ -43,4 +43,9 @@ def parse_args():
         action="store",
         help="Sets the language to search.",
     )
+    parser.add_argument(
+        "--links",
+        action="store_true",
+        help="Show the links of the results.",
+    )
     return parser.parse_args()

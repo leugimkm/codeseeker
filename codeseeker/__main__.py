@@ -22,7 +22,7 @@ For more information, see:
 https://leugimkm.github.io/codeseeker/
 """
 from .base import parse_args
-from .seeker import Seeker, open_url, to_txt
+from .seeker import Seeker, open_url, to_txt, show_links
 from .utils import show
 
 
@@ -48,6 +48,8 @@ def main():
             open_url(seeker, data)
         if args.txt:
             to_txt(seeker, data)
+        if args.links:
+            show_links(seeker, data)
 
 
 if __name__ == "__main__":
