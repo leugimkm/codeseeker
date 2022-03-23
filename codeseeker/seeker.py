@@ -1,3 +1,4 @@
+import os
 import requests  # type: ignore
 from typing import Dict, List, Optional, Union
 import webbrowser
@@ -33,6 +34,7 @@ class Query:
         self.url = self.base + self.query
         self.link = self.github + "{}/blob/main/{}"
         self.tag = "path"
+        self.raw = "https://raw.githubusercontent.com/{}/main/{}"
 
 
 class Seeker:
@@ -156,5 +158,33 @@ def show_links(
         print("\nShowing results...")
         for link in data:
             print(seeker.q.link.format(seeker.q.repo, link[seeker.q.tag]))
+    except Exception as e:
+        print(e)
+
+
+def get_file(
+    seeker: Seeker,
+    data: List[Dict[str, str]],
+) -> None:
+    """Downloads the query in 'results/filname'.
+
+    Args:
+        seeker (Seeker): Seeker object.
+        data (List[Dict[str, str]]: Data received from the search.
+
+    Raises:
+        ValidationException: If the data is empty.
+    """
+    try:
+        validate_data_links(data)
+        print("\nDownloading and creating file(s)...")
+        os.makedirs("results", exist_ok=True)
+        for link in data:
+            url = seeker.q.raw.format(seeker.q.repo, link[seeker.q.tag])
+            response = requests.get(url)
+            filename = url.split("/")[-1]
+            with open(f"results/{filename}", "w", encoding="utf-8") as f:
+                f.write(response.text)
+        print("Done!")
     except Exception as e:
         print(e)
