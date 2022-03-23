@@ -48,4 +48,10 @@ def parse_args():
         action="store_true",
         help="Show the links of the results.",
     )
+    parser.add_argument(
+        "-g",
+        "--get",
+        action="store_true",
+        help="Downlad the file(s) of the result(s).",
+    )
     return parser.parse_args()
