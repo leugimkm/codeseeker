@@ -55,6 +55,20 @@ To open the file in a web browser
 
     Opening in a web browser...
 
+To get the file:
+
+    > python -m codeseeker fibonacci --get
+    soluciones/serie_fibonacci.py
+    sololearn/python_core/code_project_72_Fibonacci.py
+    soluciones/menu_ejercicios.py
+    soluciones/menu_ejercicios_naive.py
+    soluciones/fibonacci.py
+
+    5 file(s) found(s).
+
+    Downloading and creating file(s)...
+    Done!
+
 You can also use it like this:
 
     > codeseeker calendar -r python/cpython
