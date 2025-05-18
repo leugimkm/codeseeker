@@ -1,0 +1,2 @@
+[console_scripts]
+codeseeker = codeseeker.__main__:main

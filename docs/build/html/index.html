@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Welcome to codeseeker’s documentation! &#8212; codeseeker 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="welcome-to-codeseeker-s-documentation">
+<h1>Welcome to codeseeker’s documentation!<a class="headerlink" href="#welcome-to-codeseeker-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>          .                 .
+,-. ,-. ,-| ,-. ,-. ,-. ,-. | , ,-. ,-.
+|   | | | | |-&#39; `-. |-&#39; |-&#39; |&lt;  |-&#39; |
+`-&#39; `-&#39; `-^ `-&#39; `-&#39; `-&#39; `-&#39; &#39; ` `-&#39; &#39;
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">codeseeker</span></code> is simple tool to search for code on Github.
+By default it searches to the contents of the source code file.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p><cite>codeseeker</cite> is available on <a class="reference external" href="https://pypi.org/project/codeseeker/">PyPi</a> (MIT license)
+and installation can be performed by running <a class="reference external" href="https://docs.python.org/es/3/installing/index.html">pip</a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m pip install codeseeker</span>
+</pre></div>
+</div>
+<p>To upgrade the package to the latest version:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m pip install codeseeker --upgrade</span>
+</pre></div>
+</div>
+<p>To delete the package:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m pip uninstall codeseeker</span>
+</pre></div>
+</div>
+</section>
+<section id="command-line-usage">
+<h2>Command Line Usage<a class="headerlink" href="#command-line-usage" title="Permalink to this headline">¶</a></h2>
+<p>The basic syntax for performing a search with <cite>CodeSekeer</cite> is:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">codeseeker &lt;keyword&gt; [-r REPOSITORY] [-l LANGUAGE]</span>
+</pre></div>
+</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">keyword</span></code> is the required search term.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-r</span> <span class="pre">REPOSITORY</span></code> (optional) specifies a GitHub repository in the format <code class="docutils literal notranslate"><span class="pre">owner/repo</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">LANGUAGE</span></code> (optional) specifies the programming language to filter by.</p></li>
+</ul>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>To search for a file that contains <em>“cube”</em> in a repository:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; python -m codeseeker cube</span>
+<span class="go">1 file found</span>
+
+<span class="go">repository/path/to/file.python</span>
+</pre></div>
+</div>
+<p>To open the file in a web browser:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; python -m codeseeker cube -o</span>
+<span class="go">1 file found.</span>
+
+<span class="go">repository/path/to/file.py</span>
+
+<span class="go">Opening in a web browser...</span>
+</pre></div>
+</div>
+<p>To get the file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; python -m codeseeker fibonacci --get</span>
+<span class="go">soluciones/serie_fibonacci.py</span>
+<span class="go">sololearn/python_core/code_project_72_Fibonacci.py</span>
+<span class="go">soluciones/menu_ejercicios.py</span>
+<span class="go">soluciones/menu_ejercicios_naive.py</span>
+<span class="go">soluciones/fibonacci.py</span>
+
+<span class="go">5 file(s) found(s).</span>
+
+<span class="go">Downloading and creating file(s)...</span>
+<span class="go">Done!</span>
+</pre></div>
+</div>
+<p>You can use also use it like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; codeseeker calendar -r python/cpython</span>
+<span class="go">Lib/test/test_calendar.py</span>
+<span class="go">Lib/calendar.py</span>
+<span class="go">Lib/test/test_strftime.py</span>
+<span class="go">Lib/_strptime.py</span>
+<span class="go">Lib/zoneinfo/_zoneinfo.py</span>
+<span class="go">Tools/scripts/mailerdaemon.py</span>
+<span class="go">Lib/datetime.py</span>
+<span class="go">Lib/email/_parseaddr.py</span>
+<span class="go">Lib/test/test_imaplib.py</span>
+<span class="go">Lib/imaplib.py</span>
+<span class="go">Lib/mailbox.py</span>
+<span class="go">Lib/http/server.py</span>
+<span class="go">Lib/ssl.py</span>
+<span class="go">Lib/http/cookiejar.py</span>
+<span class="go">Lib/test/datetimetester.py</span>
+
+<span class="go">15 file(s) found(s).</span>
+</pre></div>
+</div>
+<p>Help command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; codeseeker -h</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; codeseeker --help</span>
+</pre></div>
+</div>
+</section>
+<section id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">codeseeker</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2025, leugimkm.
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
