@@ -12,26 +12,26 @@ Welcome to codeseeker's documentation!
 
 ::
 
-                   .                 .          
+                   .                 .
          ,-. ,-. ,-| ,-. ,-. ,-. ,-. | , ,-. ,-.
-         |   | | | | |-' `-. |-' |-' |<  |-' |  
-         `-' `-' `-^ `-' `-' `-' `-' ' ` `-' '  
+         |   | | | | |-' `-. |-' |-' |<  |-' |
+         `-' `-' `-^ `-' `-' `-' `-' ' ` `-' '
 
-`codeseeker` is simple tool to search for code on Github.
+``codeseeker`` is simple tool to search for code on Github.
 By default it searches to the contents of the source code file.
 
 Installation
-============
+------------
 
 `codeseeker` is available on `PyPi <https://pypi.org/project/codeseeker/>`_ (MIT license)
-and installation can be performed by running `pip <https://docs.python.org/es/3/installing/index.html>`_
+and installation can be performed by running `pip <https://docs.python.org/es/3/installing/index.html>`_:
 
 
 .. code-block:: console
 
    python -m pip install codeseeker
 
-To upgrade the package:
+To upgrade the package to the latest version:
 
 .. code-block:: console
 
@@ -44,16 +44,32 @@ To delete the package:
    python -m pip uninstall codeseeker
 
 
-Example
-=======
+Command Line Usage
+------------------
 
-To search for a file that contains _"cube"_ in a repository:
+The basic syntax for performing a search with `CodeSekeer` is:
+
+.. code-block:: console
+
+   codeseeker <keyword> [-r REPOSITORY] [-l LANGUAGE]
+
+Where:
+
+* ``keyword`` is the required search term.
+* ``-r REPOSITORY`` (optional) specifies a GitHub repository in the format ``owner/repo``.
+* ``-l LANGUAGE`` (optional) specifies the programming language to filter by.
+
+
+Example
+-------
+
+To search for a file that contains *"cube"* in a repository:
 
 .. code-block:: console
 
    > python -m codeseeker cube
    1 file found
-   
+
    repository/path/to/file.python
 
 To open the file in a web browser:
@@ -103,7 +119,7 @@ You can use also use it like this:
    Lib/ssl.py
    Lib/http/cookiejar.py
    Lib/test/datetimetester.py
-   
+
    15 file(s) found(s).
 
 Help command:
@@ -120,7 +136,7 @@ or:
 
 
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
